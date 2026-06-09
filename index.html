@@ -715,6 +715,196 @@
       footer { padding: 48px 5vw 28px; }
     }
 
+    /* ── ORDEN / CARRITO ── */
+    #menu-pedidos {
+      background: var(--bg-soft);
+    }
+    .menu-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 0;
+    }
+    .menu-section-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .menu-section-header {
+      padding: 1.6rem 2rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .menu-section-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .menu-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .menu-section-subtitle {
+      font-size: 0.75rem;
+      color: var(--light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .menu-items { padding: 0.4rem 0; }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-info { flex: 1; }
+    .menu-item-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      display: block;
+    }
+    .menu-item-desc {
+      font-size: 0.78rem;
+      color: var(--light);
+      display: block;
+      margin-top: 2px;
+    }
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .qty-btn {
+      width: 34px; height: 34px;
+      background: var(--bg);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), color var(--transition);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .qty-btn:hover { background: var(--black); color: white; }
+    .qty-display {
+      width: 36px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--black);
+      background: var(--bg-soft);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Carrito flotante */
+    #cart-bar {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: var(--black);
+      color: white;
+      border-radius: 60px;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 200;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.28);
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+      min-width: 320px;
+      cursor: default;
+    }
+    #cart-bar.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+    .cart-bar-info {
+      flex: 1;
+    }
+    .cart-bar-count {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .cart-bar-items {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      margin-top: 2px;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cart-bar-send {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--whatsapp);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      padding: 10px 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cart-bar-send:hover { background: var(--whatsapp-dark); transform: scale(1.03); }
+    .cart-bar-icon {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .cart-empty-msg {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      color: var(--light);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 800px) {
+      .menu-sections { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 520px) {
+      #cart-bar { min-width: calc(100vw - 32px); border-radius: 16px; bottom: 16px; }
+      .menu-item { padding: 0.9rem 1.2rem; }
+      .menu-section-header { padding: 1.2rem 1.2rem 1rem; }
+    }
+
     @media (max-width: 400px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item { height: 220px; }
@@ -752,6 +942,7 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#galeria">Galería</a></li>
+    <li><a href="#menu-pedidos">Menú</a></li>
     <li><a href="#pedidos" class="nav-cta">Pedir ahora</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -839,6 +1030,110 @@
   </div>
 </section>
 
+<!-- ── MENU DE PEDIDOS ── -->
+<section id="menu-pedidos">
+  <p class="section-label reveal">Elige tus favoritos</p>
+  <h2 class="section-title reveal">Arma tu <em>pedido</em></h2>
+  <p class="section-desc reveal" style="margin-bottom:3rem">Selecciona la cantidad de bolos que deseas y envíanos tu pedido directo por WhatsApp.</p>
+
+  <div class="menu-sections">
+
+    <!-- SECCIÓN 1: BOLOS DE LECHE -->
+    <div class="menu-section-card reveal">
+      <div class="menu-section-header">
+        <div class="menu-section-icon"><i class="fas fa-ice-cream"></i></div>
+        <div>
+          <div class="menu-section-title">Bolos de Leche</div>
+          <div class="menu-section-subtitle">Cremosos &amp; artesanales</div>
+        </div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <span class="menu-item-name">Bolo de Oreo</span>
+            <span class="menu-item-desc">Cremoso con trozos de galleta Oreo</span>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty('oreo', -1)" aria-label="Disminuir">−</button>
+            <div class="qty-display" id="qty-oreo">0</div>
+            <button class="qty-btn" onclick="changeQty('oreo', 1)" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <span class="menu-item-name">Bolo de Yogurt</span>
+            <span class="menu-item-desc">Suave y refrescante con yogurt natural</span>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty('yogurt', -1)" aria-label="Disminuir">−</button>
+            <div class="qty-display" id="qty-yogurt">0</div>
+            <button class="qty-btn" onclick="changeQty('yogurt', 1)" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2: BOLOS DE FRUTAS -->
+    <div class="menu-section-card reveal">
+      <div class="menu-section-header">
+        <div class="menu-section-icon"><i class="fas fa-lemon"></i></div>
+        <div>
+          <div class="menu-section-title">Bolos de Frutas</div>
+          <div class="menu-section-subtitle">Naturales &amp; tropicales</div>
+        </div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <span class="menu-item-name">Pasión Frutal</span>
+            <span class="menu-item-desc">Intenso sabor a maracuyá y frutas tropicales</span>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty('pasion', -1)" aria-label="Disminuir">−</button>
+            <div class="qty-display" id="qty-pasion">0</div>
+            <button class="qty-btn" onclick="changeQty('pasion', 1)" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <span class="menu-item-name">Frutos del Paraíso</span>
+            <span class="menu-item-desc">Mezcla exótica de frutas del bosque</span>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty('paraiso', -1)" aria-label="Disminuir">−</button>
+            <div class="qty-display" id="qty-paraiso">0</div>
+            <button class="qty-btn" onclick="changeQty('paraiso', 1)" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <span class="menu-item-name">Frutas Refrescante</span>
+            <span class="menu-item-desc">Refrescante mezcla de frutas frescas</span>
+          </div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty('refrescante', -1)" aria-label="Disminuir">−</button>
+            <div class="qty-display" id="qty-refrescante">0</div>
+            <button class="qty-btn" onclick="changeQty('refrescante', 1)" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CARRITO FLOTANTE ── -->
+<div id="cart-bar">
+  <div class="cart-bar-icon"><i class="fas fa-shopping-basket"></i></div>
+  <div class="cart-bar-info">
+    <div class="cart-bar-count" id="cart-count">0 unidades</div>
+    <div class="cart-bar-items" id="cart-items-text">Tu pedido está vacío</div>
+  </div>
+  <a class="cart-bar-send" id="cart-wa-link" href="#" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i> Enviar pedido
+  </a>
+</div>
+
 <!-- ── PEDIDOS WHATSAPP ── -->
 <section id="pedidos">
   <p class="section-label reveal">¿Listo para pedir?</p>
@@ -916,7 +1211,49 @@
 </footer>
 
 <script>
-  // Nav scroll shadow
+  // ── CARRITO DE PEDIDOS ──
+  const productos = {
+    oreo:        { nombre: 'Bolo de Oreo',          qty: 0 },
+    yogurt:      { nombre: 'Bolo de Yogurt',         qty: 0 },
+    pasion:      { nombre: 'Pasión Frutal',           qty: 0 },
+    paraiso:     { nombre: 'Frutos del Paraíso',      qty: 0 },
+    refrescante: { nombre: 'Frutas Refrescante',      qty: 0 },
+  };
+
+  function changeQty(id, delta) {
+    productos[id].qty = Math.max(0, productos[id].qty + delta);
+    document.getElementById('qty-' + id).textContent = productos[id].qty;
+    updateCart();
+  }
+
+  function updateCart() {
+    const items = Object.values(productos).filter(p => p.qty > 0);
+    const total = items.reduce((s, p) => s + p.qty, 0);
+    const cartBar = document.getElementById('cart-bar');
+    const countEl = document.getElementById('cart-count');
+    const itemsEl = document.getElementById('cart-items-text');
+    const waLink  = document.getElementById('cart-wa-link');
+
+    if (total === 0) {
+      cartBar.classList.remove('visible');
+      return;
+    }
+
+    cartBar.classList.add('visible');
+    countEl.textContent = total + (total === 1 ? ' unidad' : ' unidades');
+    itemsEl.textContent = items.map(p => p.nombre + ' ×' + p.qty).join('  ·  ');
+
+    // Armar mensaje para WhatsApp
+    const lineas = items.map(p => '• ' + p.nombre + ': ' + p.qty).join('\n');
+    const msg = encodeURIComponent(
+      '¡Hola! Quiero hacer un pedido de Bolos Artesanales Benianos:\n\n' +
+      lineas +
+      '\n\nTotal: ' + total + ' bolo' + (total !== 1 ? 's' : '') +
+      '\n\n¿Me pueden confirmar disponibilidad y precio? 🙏'
+    );
+    waLink.href = 'https://wa.me/59172816697?text=' + msg;
+  }
+
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
